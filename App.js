@@ -2,11 +2,12 @@
 
 const express = require("express");
 const { sendWelcomeEmail, sendPurchaseEmail } = require("./Node");
+require('dotenv').config();
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 // Middleware to parse JSON bodies
 app.use(express.json());
-require('dotenv').config();
 
 
 // Middleware to enable CORS
@@ -39,6 +40,6 @@ app.get("/", (req, res) => {
   res.send("Welcome to backend");
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server is running on port 3000");
 });
